@@ -1,41 +1,43 @@
 import Image from "next/image";
-import { SparklesText } from "@/components/ui/sparkles-text";
+import { SectionHeader } from "@/components/ui/section-header";
+import { TeamMember } from "@/types";
 
-interface TeamMember {
-  name: string;
-  role: string;
-  description: string;
-  avatar: string;
-  emoji: string;
-}
+const SECTION_CONFIG = {
+  title: "編集局メンバー",
+  subtitle: "バラエティ豊かなメンバーでお送りします",
+  sparklesConfig: {
+    colors: { first: "#4285F4", second: "#34A853" },
+    sparklesCount: 2
+  }
+};
 
 const team: TeamMember[] = [
   {
     name: "だらリーヌ/ボス猫",
     role: "編集長",
     description: "JTC企業でAIルール作ってます！現場目線で解説します！",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+    avatar: "/images/team/darane.jpg",
     emoji: "👩‍💼"
   },
   {
     name: "読書ギャル卍頭よくなりたい",
     role: "アシスタント",
     description: "とりま勉強中！むずかしいAI話をわかりやすく書きます♪",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+    avatar: "/images/team/reading-girl.jpg",
     emoji: "📚"
   },
   {
     name: "インターンAI猫",
     role: "アシスタント",
     description: "にゃーん。最新のAI技術について調査してるにゃん。",
-    avatar: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&h=300&fit=crop&crop=face",
+    avatar: "/images/team/intern-cat.jpg",
     emoji: "🐱"
   },
   {
     name: "AIろぼ",
     role: "アシスタント",
     description: "01010111 技術解説担当デス。データ分析ガ得意デス。",
-    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300&h=300&fit=crop&crop=face",
+    avatar: "/images/team/ai-robot.jpg",
     emoji: "🤖"
   }
 ];
@@ -44,17 +46,11 @@ export function EditorialTeam() {
   return (
     <section className="py-32 bg-gray-50">
       <div className="container">
-        <div className="text-center mb-20">
-          <SparklesText 
-            text="編集局メンバー" 
-            className="text-3xl font-semibold mb-6"
-            colors={{ first: "#4285F4", second: "#34A853" }}
-            sparklesCount={2}
-          />
-          <p className="text-lg text-gray-600">
-            バラエティ豊かなメンバーでお送りします
-          </p>
-        </div>
+        <SectionHeader 
+          title={SECTION_CONFIG.title}
+          subtitle={SECTION_CONFIG.subtitle}
+          sparklesConfig={SECTION_CONFIG.sparklesConfig}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (
@@ -68,7 +64,14 @@ export function EditorialTeam() {
                   src={member.avatar}
                   alt={member.name}
                   fill
-                  className="rounded-full object-cover"
+                  className="rounded-full object-cover object-center"
+                  style={{ 
+                    objectPosition: member.name === "読書ギャル卍頭よくなりたい" 
+                      ? "50% 10%" 
+                      : member.name === "だらリーヌ/ボス猫" 
+                        ? "50% 5%" 
+                        : "50% 50%" 
+                  }}
                 />
                 <div className="absolute -bottom-1 -right-1 text-2xl">
                   {member.emoji}
@@ -81,12 +84,9 @@ export function EditorialTeam() {
               </div>
 
               {/* Name */}
-              <div className="relative">
-                <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 h-1 group-hover/card:h-2 w-8 group-hover/card:w-12 rounded-full bg-gray-200 group-hover/card:bg-purple-500 transition-all duration-300" />
-                <h3 className="font-bold text-gray-900 mb-3 group-hover/card:translate-y-1 transition-all duration-300">
-                  {member.name}
-                </h3>
-              </div>
+              <h3 className="font-bold text-gray-900 mb-3">
+                {member.name}
+              </h3>
 
               {/* Description */}
               <p className="text-gray-600 text-sm leading-relaxed">

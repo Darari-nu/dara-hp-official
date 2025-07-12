@@ -23,7 +23,7 @@ export function MinimalHero() {
         <div className="mb-4 space-y-1 text-sm lg:text-base opacity-80 max-w-2xl mx-auto">
           <p>• 社内ルール、まだ整備されてない？</p>
           <p className="font-medium">• AI使って大丈夫？その判断、誰がする？</p>
-          <p>• いきなり"AI導入しろ"って言われても...</p>
+          <p>• いきなり&quot;AI導入しろ&quot;って言われても...</p>
         </div>
         
         <p className="text-base lg:text-lg mb-10 max-w-2xl mx-auto opacity-85 font-medium">

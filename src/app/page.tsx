@@ -3,30 +3,19 @@ import { Blog8 } from "@/components/sections/Blog8";
 import { EditorialTeam } from "@/components/sections/EditorialTeam";
 import { SimpleWorkShowcase } from "@/components/sections/SimpleWorkShowcase";
 import { UdemyComingSoon } from "@/components/sections/UdemyComingSoon";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <MinimalHero />
-      
-      {/* Subtle divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-      
+      <SectionDivider />
       <Blog8 />
-      
-      {/* Subtle divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-      
+      <SectionDivider />
       <EditorialTeam />
-      
-      {/* Subtle divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-      
+      <SectionDivider />
       <SimpleWorkShowcase />
-      
-      {/* Subtle divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-      
+      <SectionDivider />
       <UdemyComingSoon />
     </div>
   );

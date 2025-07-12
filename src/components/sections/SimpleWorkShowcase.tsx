@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-import { SparklesText } from "@/components/ui/sparkles-text";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Work } from "@/types";
 
-interface Work {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  url?: string;
-}
+const SECTION_CONFIG = {
+  title: "作例",
+  sparklesConfig: {
+    colors: { first: "#9E7AFF", second: "#FE8BBB" },
+    sparklesCount: 4
+  }
+};
 
 // ユーザーが作成するLPの例（後で実際のものに差し替え）
 const works: Work[] = [
@@ -39,14 +40,10 @@ export function SimpleWorkShowcase() {
   return (
     <section id="works" className="py-32 bg-white">
       <div className="container">
-        <div className="text-center mb-20">
-          <SparklesText 
-            text="作例" 
-            className="text-3xl font-semibold mb-6"
-            colors={{ first: "#9E7AFF", second: "#FE8BBB" }}
-            sparklesCount={4}
-          />
-        </div>
+        <SectionHeader 
+          title={SECTION_CONFIG.title}
+          sparklesConfig={SECTION_CONFIG.sparklesConfig}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {works.map((work) => (

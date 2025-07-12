@@ -2,18 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight } from "lucide-react";
-import { SparklesText } from "@/components/ui/sparkles-text";
+import { SectionHeader } from "@/components/ui/section-header";
+import { BlogPost } from "@/types";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  summary: string;
-  author: string;
-  published: string;
-  tags: string[];
-  image: string;
-  url: string;
-}
+const SECTION_CONFIG = {
+  title: "最新記事",
+  sparklesConfig: {
+    colors: { first: "#4285F4", second: "#34A853" },
+    sparklesCount: 2
+  }
+};
 
 // Sample data based on CLAUDE.md specifications
 const sampleBlogs: BlogPost[] = [
@@ -53,14 +51,10 @@ export function Blog8() {
   return (
     <section className="py-32 bg-white">
       <div className="container">
-        <div className="text-center mb-20">
-          <SparklesText 
-            text="最新記事" 
-            className="text-3xl font-semibold mb-6"
-            colors={{ first: "#4285F4", second: "#34A853" }}
-            sparklesCount={2}
-          />
-        </div>
+        <SectionHeader 
+          title={SECTION_CONFIG.title}
+          sparklesConfig={SECTION_CONFIG.sparklesConfig}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {sampleBlogs.map((blog) => (

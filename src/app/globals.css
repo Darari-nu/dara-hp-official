@@ -64,8 +64,47 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    font-feature-settings: "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
   body {
-    @apply bg-gray-50 text-neutral-800 font-sans antialiased leading-relaxed;
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+  }
+  
+  h1 { @apply text-4xl md:text-5xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  h4 { @apply text-xl md:text-2xl; }
+  h5 { @apply text-lg md:text-xl; }
+  h6 { @apply text-base md:text-lg; }
+  
+  p {
+    @apply text-gray-700;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  /* Improved link styles */
+  a {
+    @apply transition-colors duration-200;
+  }
+  
+  /* Better button base styles */
+  button {
+    @apply transition-all duration-200;
   }
 }
 
@@ -145,4 +184,31 @@
   background: linear-gradient(white, white) padding-box,
               linear-gradient(45deg, #4285F4, #EA4335, #FBBC05, #34A853) border-box;
   border: 2px solid transparent;
+}
+
+/* Enhanced readability utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 focus-ring transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-blue-600 border-2 border-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 focus-ring transition-all duration-200;
+  }
 }

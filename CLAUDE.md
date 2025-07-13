@@ -268,8 +268,101 @@ const darineAuthors = [
 - 一貫したコンポーネント構造
 - ビルドエラーの修正完了
 
+## Sanity CMS実装完了（2025-07-12）
+
+### ✅ 実装済み
+
+#### Sanity設定
+- **プロジェクトID**: `9kqjddwl`
+- **Studio URL**: http://localhost:3333
+- **データセット**: production
+
+#### スキーマ設計
+1. **Author**: 著者管理（名前、役割、説明、アバター、絵文字）
+2. **BlogPost**: ブログ記事（タイトル、内容、アイキャッチ、著者、カテゴリ）
+3. **Category**: カテゴリ管理（タイトル、説明、スラッグ）
+4. **FAQ**: よくある質問（質問、回答、カテゴリ）
+5. **SiteSettings**: サイト全体設定（タイトル、説明、ロゴ、SNSリンク）
+
+#### Next.js連携
+- **APIクライアント**: `/src/lib/sanity.ts`で設定完了
+- **型定義**: `/src/types/sanity.ts`でTypeScript対応
+- **クエリ**: 最新記事取得、著者一覧取得のクエリ実装
+- **画像最適化**: `urlFor`ヘルパーでSanity画像の最適化対応
+
+#### コンポーネント更新
+- **Blog8**: SanityブログデータをProps経由で受け取り表示
+- **EditorialTeam**: Sanity著者データをProps経由で受け取り表示
+- **データ変換**: Sanityデータをローカルインターフェースに自動変換
+
+#### 起動方法
+```bash
+# Next.js開発サーバー
+npm run dev  # http://localhost:3001
+
+# Sanity Studio  
+npm run sanity  # http://localhost:3333
+```
+
+### ✅ 完了済みタスク
+1. 著者データ作成（だらリーヌ、読書ギャル卍、インターンAI猫、AIろぼ）
+2. サンプルブログ記事3件作成  
+3. カテゴリ作成（AI規制、技術解説、トレンドなど）
+4. Next.jsサイトでの表示確認
+
+### 🔍 確認されたこと
+- Sanity Studio: http://localhost:3333 で全データ管理可能
+- Next.jsサイト: http://localhost:3000 でSanityデータが正常表示
+- Blog8セクション: 3つの記事が表示（AI規制ガイド、ChatGPT活用、AI導入失敗談）
+- EditorialTeamセクション: 4人の著者が表示（各々のアバター・絵文字付き）
+
+### ⚠️ 注意点
+- ブログ記事の個別ページ（/blog/[slug]）はまだ実装されていない（404エラー）
+- 記事クリック時は詳細ページが必要
+
+## ⚡ 緊急修正（2025-07-12）
+
+### 🚨 サーバーエラー修正完了
+
+#### 発生した問題
+- **エラー**: `Invalid hook call. Hooks can only be called inside of the body of a function component`
+- **原因**: Server ComponentとClient Componentの混在
+- **影響**: ホームページが500エラーで表示されない
+
+#### 根本原因分析
+1. **SectionHeaderコンポーネント**:
+   - SparklesText（Client Component）を使用
+   - `"use client"`ディレクティブが不足
+   
+2. **UdemyComingSoonコンポーネント**:
+   - 同様にSparklesTextを使用
+   - `"use client"`ディレクティブが不足
+
+#### 解決策実施
+```typescript
+// src/components/ui/section-header.tsx
+"use client";  // 追加
+import { SparklesText } from "@/components/ui/sparkles-text";
+
+// src/components/sections/UdemyComingSoon.tsx  
+"use client";  // 追加
+import { SparklesText } from "@/components/ui/sparkles-text";
+```
+
+#### 修正結果
+- ✅ ホームページ正常表示（HTTP 200）
+- ✅ 編集局メンバーの画像・説明復活
+- ✅ React Hooksエラー完全解決
+
+#### 📋 対処法ルール
+**Next.js App Routerでの注意点**:
+1. Client Componentを使うコンポーネントには必ず`"use client"`を追加
+2. SparklesText, framer-motion等のHooksを使うコンポーネントはClient Component
+3. Server Componentからは直接的にHooksを使用不可
+4. データフェッチはServer Component、UI動作はClient Componentで分離
+
 ---
 
-**更新日**: 2025-07-10  
+**更新日**: 2025-07-12  
 **作成者**: だらリーヌ  
-**バージョン**: 2.1（リファクタリング完了版）
+**バージョン**: 2.3（緊急修正版）

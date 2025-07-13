@@ -1,0 +1,4 @@
+{"_type": "category", "title": "AI規制", "description": "AI関連の法規制・ガイドライン情報", "slug": {"_type": "slug", "current": "ai-regulation"}}
+{"_type": "category", "title": "技術解説", "description": "AI技術の仕組みや実装方法の解説", "slug": {"_type": "slug", "current": "tech-explanation"}}
+{"_type": "category", "title": "トレンド", "description": "AI業界の最新動向やニュース", "slug": {"_type": "slug", "current": "trends"}}
+{"_type": "category", "title": "事例紹介", "description": "AI導入の成功事例や失敗談", "slug": {"_type": "slug", "current": "case-studies"}}

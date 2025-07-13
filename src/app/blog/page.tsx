@@ -2,17 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Search } from "lucide-react";
-
-interface BlogPost {
-  id: string;
-  title: string;
-  summary: string;
-  author: string;
-  published: string;
-  tags: string[];
-  image: string;
-  url: string;
-}
+import { BlogPost } from "@/types";
 
 // Extended blog post data
 const allBlogs: BlogPost[] = [
@@ -83,10 +73,10 @@ export default function BlogPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="py-20 bg-white">
-        <div className="container">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold font-display mb-6">
-              <span className="google-gradient">AI規制</span>と実践の
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">AI規制</span>と実践の
               <br />
               最新情報ブログ
             </h1>
@@ -111,8 +101,8 @@ export default function BlogPage() {
 
       {/* Blog Posts Grid */}
       <section className="py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {allBlogs.map((blog) => (
               <Link href={blog.url} key={blog.id} className="group">
                 <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group-hover:transform group-hover:scale-105">
@@ -164,8 +154,8 @@ export default function BlogPage() {
 
       {/* Categories Section */}
       <section className="py-16 bg-white">
-        <div className="container">
-          <h2 className="text-3xl font-bold font-display text-center mb-12">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
             カテゴリ別記事
           </h2>
           <div className="flex flex-wrap justify-center gap-4">

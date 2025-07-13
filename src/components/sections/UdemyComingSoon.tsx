@@ -1,3 +1,5 @@
+"use client";
+
 import { SparklesText } from "@/components/ui/sparkles-text";
 
 export function UdemyComingSoon() {

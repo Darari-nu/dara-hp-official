@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TeamMember } from "@/types";
+import { TeamMember, SectionConfig } from "@/types";
 
-const SECTION_CONFIG = {
+const SECTION_CONFIG: SectionConfig = {
   title: "編集局メンバー",
   subtitle: "バラエティ豊かなメンバーでお送りします",
   sparklesConfig: {
@@ -44,19 +44,19 @@ const team: TeamMember[] = [
 
 export function EditorialTeam() {
   return (
-    <section className="py-32 bg-gray-50">
-      <div className="container">
+    <section className="py-20 md:py-32 bg-gray-50">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           title={SECTION_CONFIG.title}
           subtitle={SECTION_CONFIG.subtitle}
           sparklesConfig={SECTION_CONFIG.sparklesConfig}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {team.map((member, index) => (
             <div 
               key={index}
-              className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100/50 group/card relative"
+              className="bg-white rounded-3xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 group/card relative card-hover"
             >
               {/* Avatar */}
               <div className="relative w-20 h-20 mx-auto mb-4">
@@ -89,7 +89,7 @@ export function EditorialTeam() {
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed text-pretty">
                 {member.description}
               </p>
             </div>

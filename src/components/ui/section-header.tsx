@@ -1,3 +1,5 @@
+"use client";
+
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { cn } from "@/lib/utils";
 

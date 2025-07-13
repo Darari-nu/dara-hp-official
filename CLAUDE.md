@@ -363,6 +363,57 @@ import { SparklesText } from "@/components/ui/sparkles-text";
 
 ---
 
-**更新日**: 2025-07-12  
+## 🚀 Vercelデプロイトラブルシューティング
+
+### 問題: サイトが404エラーでアクセスできない
+
+#### 症状
+- ✅ ローカルビルド成功 (`npm run build`)
+- ✅ Vercelデプロイ完了表示
+- ❌ HTTP 404/401エラーでサイトアクセス不可
+
+#### 根本原因
+**Next.js 14 App Routerの自動検出失敗**
+- Vercelが`vercel.json`なしでNext.jsフレームワークを正しく認識できない
+- デフォルト設定で静的サイトとして扱われる
+- App Routerのルーティングが機能しない
+
+#### 解決方法
+```json
+// vercel.json を追加
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install"
+}
+```
+
+#### 検証手順
+```bash
+# 1. 設定ファイル追加後に再デプロイ
+npx vercel --prod
+
+# 2. フレームワーク検出確認
+# ログに「Detected Next.js version: 14.2.5」が表示されること
+
+# 3. HTTPステータス確認
+curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" https://your-app.vercel.app
+# 期待値: HTTP Status: 200
+```
+
+#### 予防策
+- **新規Next.jsプロジェクト**: 必ず`vercel.json`でフレームワーク明示
+- **デプロイ前チェック**: ローカルビルド成功 + ログでフレームワーク検出確認
+- **TDD原則**: エラー回避ではなく根本原因特定を優先
+
+#### 失敗パターン（やってはいけない）
+- ❌ プロジェクト名変更で回避しようとする
+- ❌ 別URLでエラーを隠蔽する  
+- ❌ 根本原因分析を飛ばす
+
+---
+
+**更新日**: 2025-07-13  
 **作成者**: だらリーヌ  
-**バージョン**: 2.3（緊急修正版）
+**バージョン**: 2.4（Vercelデプロイ修正版）

@@ -71,10 +71,11 @@ export function Blog8({ posts }: Blog8Props) {
           sparklesConfig={SECTION_CONFIG.sparklesConfig}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {blogsToDisplay.map((blog) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {blogsToDisplay.map((blog, index) => (
             <Link href={blog.url} key={blog.id} className="group">
-              <article className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 group/card relative h-full flex flex-col">
+              <article className={`enhanced-card rounded-3xl overflow-hidden h-full flex flex-col animate-on-scroll`}
+                       style={{transitionDelay: `${index * 100}ms`}}>
                 {/* Featured Image */}
                 <div className="aspect-[16/9] relative overflow-hidden">
                   <Image
@@ -83,47 +84,54 @@ export function Blog8({ posts }: Blog8Props) {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute top-3 left-3 flex gap-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 left-4 flex gap-2">
                     {blog.tags.slice(0, 2).map((tag) => (
-                      <Badge key={tag} className="bg-blue-600 text-white font-medium text-xs px-2 py-1 shadow-sm">
+                      <Badge key={tag} className="bg-white/90 backdrop-blur-sm text-slate-800 font-medium text-xs px-3 py-1 shadow-lg border-0 hover:bg-white transition-colors">
                         {tag}
                       </Badge>
                     ))}
                   </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                    <div className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                      <ArrowRight className="w-5 h-5 text-slate-800" />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 leading-tight">
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 leading-tight">
                     {blog.title}
                   </h3>
                   
-                  <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3 flex-1">
+                  <p className="text-slate-600 mb-8 leading-relaxed line-clamp-3 flex-1 text-sm">
                     {blog.summary}
                   </p>
                   
                   {/* Author and Date */}
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4 pb-4 border-t border-gray-100">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                        <User className="w-4 h-4 text-blue-600" />
+                  <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                        <User className="w-5 h-5 text-white" />
                       </div>
-                      <span className="font-medium text-gray-700">{blog.author}</span>
+                      <div>
+                        <div className="font-semibold text-slate-800">{blog.author}</div>
+                        <div className="flex items-center space-x-1 text-slate-500">
+                          <Calendar className="w-3 h-3" />
+                          <span className="text-xs">{blog.published}</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-500">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-xs">{blog.published}</span>
+                    
+                    <div className="text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                      <span className="text-sm">続きを読む</span>
                     </div>
-                  </div>
-                  
-                  {/* Read More Link */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
-                      続きを読む
-                    </span>
-                    <ArrowRight className="w-5 h-5 text-blue-600 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
+
+                {/* Hover highlight effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </article>
             </Link>
           ))}

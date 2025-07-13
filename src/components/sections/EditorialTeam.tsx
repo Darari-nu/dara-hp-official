@@ -52,46 +52,56 @@ export function EditorialTeam() {
           sparklesConfig={SECTION_CONFIG.sparklesConfig}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {team.map((member, index) => (
             <div 
               key={index}
-              className="bg-white rounded-3xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-200 group/card relative card-hover"
+              className={`enhanced-card rounded-3xl p-8 text-center h-full flex flex-col animate-on-scroll group/card relative`}
+              style={{transitionDelay: `${index * 100}ms`}}
             >
-              {/* Avatar */}
-              <div className="relative w-20 h-20 mx-auto mb-4">
-                <Image
-                  src={member.avatar}
-                  alt={member.name}
-                  fill
-                  className="rounded-full object-cover object-center"
-                  style={{ 
-                    objectPosition: member.name === "読書ギャル卍頭よくなりたい" 
-                      ? "50% 10%" 
-                      : member.name === "だらリーヌ/ボス猫" 
-                        ? "50% 5%" 
-                        : "50% 50%" 
-                  }}
-                />
-                <div className="absolute -bottom-1 -right-1 text-2xl">
+              {/* Avatar with enhanced styling */}
+              <div className="relative w-24 h-24 mx-auto mb-6">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={member.avatar}
+                    alt={member.name}
+                    fill
+                    className="rounded-full object-cover object-center shadow-xl ring-4 ring-white/50 group-hover/card:ring-blue-200/50 transition-all duration-300"
+                    style={{ 
+                      objectPosition: member.name === "読書ギャル卍頭よくなりたい" 
+                        ? "50% 10%" 
+                        : member.name === "だらリーヌ/ボス猫" 
+                          ? "50% 5%" 
+                          : "50% 50%" 
+                    }}
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/10 to-purple-500/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="absolute -bottom-2 -right-2 text-3xl transform group-hover/card:scale-110 transition-transform duration-300 drop-shadow-lg">
                   {member.emoji}
                 </div>
               </div>
 
-              {/* Role Badge */}
-              <div className="inline-flex items-center bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-3">
+              {/* Role Badge with enhanced styling */}
+              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg">
                 {member.role}
               </div>
 
-              {/* Name */}
-              <h3 className="font-bold text-gray-900 mb-3">
+              {/* Name with enhanced typography */}
+              <h3 className="font-bold text-xl text-slate-900 mb-4 group-hover/card:text-blue-600 transition-colors duration-300">
                 {member.name}
               </h3>
 
-              {/* Description */}
-              <p className="text-gray-600 text-sm leading-relaxed text-pretty">
+              {/* Description with enhanced styling */}
+              <p className="text-slate-600 text-sm leading-relaxed flex-1 group-hover/card:text-slate-700 transition-colors duration-300">
                 {member.description}
               </p>
+
+              {/* Subtle background pattern */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              
+              {/* Floating accent */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform scale-0 group-hover/card:scale-100" />
             </div>
           ))}
         </div>

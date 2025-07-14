@@ -1,105 +1,124 @@
 # だらリーヌ公式サイト
 
-AI規制・ガイドライン専門コンサルタント「だらリーヌ」の公式サイト
+AI規制・ガイドライン専門の法人向けサイト。モダンミニマルデザインで実装。
 
-## 🚀 技術スタック
+## 🚀 クイックスタート
+
+```bash
+# プロジェクトディレクトリに移動
+cd /Users/watanabehidetaka/Claudecode/Dara_HP
+
+# 開発サーバー起動
+npm run dev
+
+# ブラウザで確認（ポート自動切り替えに注意）
+open http://localhost:3001
+```
+
+## 📱 デプロイ済みサイト
+
+- **開発版**: http://localhost:3001 （※ポート自動切り替え）
+- **本番版**: https://darahp.vercel.app
+
+## 🔧 技術スタック
 
 - **フロントエンド**: Next.js 14 (App Router)
-- **言語**: TypeScript
 - **スタイリング**: Tailwind CSS + shadcn/ui
-- **フォント**: Noto Sans JP + Poppins
-- **デプロイ**: Vercel対応
+- **CMS**: Sanity
+- **ホスティング**: Vercel
+- **言語**: TypeScript
 
-## 📂 プロジェクト構成
+## 📁 主要ファイル構成
 
 ```
 src/
 ├── app/
-│   ├── blog/           # ブログページ
-│   ├── globals.css     # グローバルスタイル
-│   ├── layout.tsx      # ルートレイアウト
-│   └── page.tsx        # トップページ
+│   ├── page.tsx              # メインページ
+│   ├── blog/page.tsx         # ブログ一覧
+│   └── layout.tsx            # 共通レイアウト
 ├── components/
-│   ├── layout/         # ヘッダー・フッター
-│   ├── sections/       # セクションコンポーネント
-│   └── ui/            # shadcn/ui コンポーネント
+│   ├── layout/
+│   │   └── Header.tsx        # ガラスモルフィズムヘッダー
+│   ├── sections/
+│   │   ├── MinimalHero.tsx   # ヒーローセクション
+│   │   ├── ProblemsSection.tsx # お悩みセクション
+│   │   ├── Blog8.tsx         # ブログカード
+│   │   └── EditorialTeam.tsx # 編集局メンバー
+│   └── ui/
+│       ├── scroll-animations.tsx # スクロールアニメーション
+│       └── sparkles-text.tsx     # キラキラ効果
 └── lib/
-    └── utils.ts       # ユーティリティ関数
+    └── sanity.ts             # CMS連携
 ```
 
-## 🎨 実装済み機能
+## 🎨 デザイン特徴
 
-### ✅ 完了項目
+- **ガラスモルフィズム**: 透明感のあるナビゲーション
+- **スクロールアニメーション**: IntersectionObserver使用
+- **SparklesText**: キラキラ効果（既存機能保持）
+- **レスポンシブ**: モバイルファースト設計
 
-- **基本セットアップ**: Next.js + TypeScript + Tailwind CSS
-- **レイアウト**: ヘッダー・フッター・ナビゲーション
-- **トップページ全セクション**:
-  - ヒーローセクション（Google風グラデーション）
-  - 共感カルーセル（3つのペルソナ対応タブ）
-  - サービス概要
-  - Trust Badges
-  - 5ステップ導入フロー
-  - 最新ブログ記事表示
-  - アニメーション付き著者紹介
-  - FAQ（アコーディオン）
-  - 最終CTA
-- **ブログページ**: 記事一覧・検索機能・カテゴリ表示
+## ✅ 実装済み機能
 
-### 🔄 実装予定項目
+### 🎯 デザイン刷新（2025-07-13）
+- **参考コード準拠ヒーロー**: 「AIと、もっと軽やかに。」
+- **お悩みセクション**: 「こんなお悩み、ありませんか？」
+- **強化されたブログカード**: グラデーション・ホバーエフェクト
+- **編集局メンバー**: アニメーション付きアバター（SparklesText保持）
 
-- Sanity CMS統合
-- Algolia検索機能
-- SEO最適化
-- Vercelデプロイ設定
+### 🔧 技術実装
+- **Sanity CMS統合**: ブログ記事管理
+- **Vercelデプロイ**: 本番環境構築
+- **スクロールアニメーション**: IntersectionObserver
+- **エラーバウンダリ**: 堅牢なエラーハンドリング
 
-## 🎯 デザイン仕様
+## 🔧 トラブルシューティング
 
-### カラーパレット
-- **背景**: `bg-gray-50` (#F9FAFB)
-- **本文**: `text-neutral-800` (#1F2937)
-- **アクセント**: Googleカラー（Blue, Red, Yellow, Green）
+### サーバーが起動しない場合
 
-### フォント
-- **本文**: Noto Sans JP
-- **見出し**: Poppins（`font-display`クラス）
-
-### 特徴的な要素
-- **Google風グラデーション**: `.google-gradient`クラス
-- **レスポンシブデザイン**: モバイルファースト
-- **アニメーション**: Framer Motion使用予定
-
-## 🚀 開発・デプロイ
-
-### 開発サーバー起動
 ```bash
+# キャッシュクリア
+rm -rf .next
 npm run dev
 ```
 
-### ビルド
+### JSX構文エラーの場合
+
 ```bash
-npm run build
+# エラーログ確認
+cat /tmp/nextjs.log | grep -A 5 "Parsing ecmascript"
+
+# 該当ファイルのタグ構造をチェック
 ```
 
-### 本番サーバー起動
+### Vercelデプロイエラーの場合
+
 ```bash
-npm run start
+# vercel.jsonが存在することを確認
+cat vercel.json
+
+# 再デプロイ
+npx vercel --prod
 ```
+
+## 📝 詳細ドキュメント
+
+詳細な実装内容・エラー対応については `CLAUDE.md` を参照してください。
+
+## 🔄 開発フロー
+
+1. ローカル開発: `npm run dev`
+2. コミット: `git add . && git commit -m "message"`
+3. プッシュ: `git push origin main`
+4. デプロイ: `npx vercel --prod`
 
 ## 📝 更新履歴
 
+- **2025-07-13**: デザイン大幅刷新・JSXエラー修正完了（サーバー正常稼働）
+- **2025-07-10**: リファクタリング完了・共通コンポーネント化
 - **2025-07-06**: プロジェクト初期セットアップ完了
-- **2025-07-06**: 全メインセクション実装完了
-- **2025-07-06**: ブログページ基本機能実装
-
-## 🎯 次のステップ
-
-1. Sanity CMS設定とスキーマ作成
-2. Algolia検索機能実装
-3. 動的コンテンツ管理機能
-4. SEO最適化
-5. Vercel本番デプロイ
 
 ---
 
-**開発者**: Claude Code  
-**最終更新**: 2025年7月6日
+**バージョン**: 2.5（デザイン刷新版）  
+**最終更新**: 2025-07-13

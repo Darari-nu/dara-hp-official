@@ -414,6 +414,187 @@ curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" https://your-app.vercel.ap
 
 ---
 
+## 🎨 デザイン大幅アップグレード実装
+
+### 実装内容（2025-07-13）
+
+#### 参考デザインコードの採用
+- **参考元**: モダンミニマルデザインコード（ガラスモルフィズム・スクロールアニメーション）
+- **方針**: 既存機能（SparklesText、編集局メンバー）は保持、デザインのみ刷新
+
+#### ✨ 新規実装コンポーネント
+
+1. **ガラスモルフィズム固定ヘッダー**
+   ```tsx
+   // src/components/layout/Header.tsx
+   - DaraHPロゴ（だらリーヌ削除）
+   - teal-500の「記事を読む」ボタン
+   - glass-navクラスでガラス効果
+   ```
+
+2. **参考コード準拠ヒーローセクション**
+   ```tsx
+   // src/components/sections/MinimalHero.tsx
+   - 「AIと、もっと軽やかに。」メインタイトル
+   - blur-sm背景画像 + 黒オーバーレイ
+   - 「最新記事をチェック」CTAボタン
+   ```
+
+3. **お悩みセクション（新規）**
+   ```tsx
+   // src/components/sections/ProblemsSection.tsx
+   - 「こんなお悩み、ありませんか？」
+   - 3つのCheckIcon付きカード
+   - teal-100背景アイコン
+   ```
+
+4. **スクロールアニメーション**
+   ```tsx
+   // src/components/ui/scroll-animations.tsx
+   - IntersectionObserver使用
+   - .animate-on-scroll/.is-visibleクラス
+   - enhanced-cardホバーエフェクト
+   ```
+
+#### 🔄 改良済みコンポーネント
+
+- **Blog8**: 強化されたカードデザイン、グラデーション効果
+- **EditorialTeam**: アニメーション付きアバター、リングエフェクト
+- **page.tsx**: セクション構成の再編成
+
+#### 📁 現在のサイト構成
+```
+ヒーローセクション (参考コード準拠)
+　　↓
+お悩みセクション (新規・参考コード準拠)
+　　↓
+新着記事セクション (改良版Blog8)
+　　↓
+編集局メンバー (SparklesText保持)
+　　↓
+作例紹介・お問い合わせ
+```
+
+---
+
+## 🔧 新発見エラー: JSX構文エラートラブルシューティング
+
+### 問題: Internal Server Error - JSX構文エラー
+
+#### 症状
+- ✅ Next.jsサーバー起動成功
+- ❌ HTTP 500 Internal Server Error
+- ❌ ブラウザで「このサイトにアクセスできません」
+
+#### 根本原因
+**JSX構文の重複タグエラー**
+- 不要な`</div>`タグの存在
+- React要素の不正な閉じタグ
+- Expected ',' got 'className' エラー
+
+#### 解決方法
+```bash
+# 1. エラーログ確認
+cat /tmp/nextjs.log | grep -A 5 -B 5 "Parsing ecmascript"
+
+# 2. 該当ファイルの構文修正
+# 例: Blog8.tsx:136行目の不要なタグ削除
+
+# 3. サーバー再起動不要（Hot Reload自動適用）
+```
+
+#### 具体的修正例
+```tsx
+// ❌ 間違い
+          ))}
+        </div>
+
+      </div>  // <-- 不要な閉じタグ
+      
+      <div className="text-center mt-12">
+
+// ✅ 正解  
+          ))}
+      </div>
+      
+      <div className="text-center mt-12">
+```
+
+#### 検証手順
+```bash
+# HTTPステータス確認
+curl -I http://localhost:3001  # ポート注意（3000が使用中の場合3001に自動切り替え）
+# 期待値: HTTP/1.1 200 OK
+
+# ステータスコードのみ確認
+curl -s -o /dev/null -w "%{http_code}" http://localhost:3001
+# 期待値: 200
+```
+
+#### ✅ 修正完了（2025-07-13 継続セッション）
+- **対象ファイル**: Blog8.tsx
+- **修正内容**: JSX構文の整理・フォーマット調整
+- **結果**: サーバー正常起動確認済み（http://localhost:3001）
+- **HTTPステータス**: 200 OK
+- **所要時間**: 即座にHot Reload適用
+
+#### 予防策
+- **JSX構造の確認**: 開発時にカッコの対応をチェック
+- **段階的修正**: 大幅変更時は小さく分けて実装
+- **エラーログ監視**: /tmp/nextjs.logの定期確認
+
+---
+
+## 🚀 クイックスタートガイド
+
+### 新しいターミナルでの起動手順
+```bash
+# 1. プロジェクトディレクトリに移動
+cd /Users/watanabehidetaka/Claudecode/Dara_HP
+
+# 2. 依存関係確認（初回のみ）
+npm install
+
+# 3. 開発サーバー起動
+npm run dev
+
+# 4. ブラウザで確認
+# http://localhost:3000
+
+# 5. エラー時のトラブルシューティング
+# キャッシュクリア
+rm -rf .next && npm run dev
+
+# 6. Vercelデプロイ（本番）
+npx vercel --prod
+```
+
+### 主要ファイル構成
+```
+src/
+├── app/
+│   ├── page.tsx (メインページ・セクション統合)
+│   ├── blog/page.tsx (ブログ一覧)
+│   └── layout.tsx (共通レイアウト)
+├── components/
+│   ├── layout/Header.tsx (ガラスモルフィズムヘッダー)
+│   ├── sections/
+│   │   ├── MinimalHero.tsx (参考コード準拠ヒーロー)
+│   │   ├── ProblemsSection.tsx (お悩みセクション・新規)
+│   │   ├── Blog8.tsx (強化されたブログカード)
+│   │   └── EditorialTeam.tsx (SparklesText保持)
+│   └── ui/
+│       ├── scroll-animations.tsx (アニメーション・新規)
+│       └── sparkles-text.tsx (キラキラ効果・保持)
+└── lib/sanity.ts (CMS連携)
+```
+
+### デプロイ済みサイト
+- **開発版**: http://localhost:3000
+- **本番版**: https://darahp.vercel.app
+
+---
+
 **更新日**: 2025-07-13  
 **作成者**: だらリーヌ  
-**バージョン**: 2.4（Vercelデプロイ修正版）
+**バージョン**: 2.5（デザイン刷新・JSXエラー対応版）

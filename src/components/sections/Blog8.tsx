@@ -63,15 +63,10 @@ export function Blog8({ posts }: Blog8Props) {
   const blogsToDisplay = transformResult.hasError || transformResult.data.length === 0
     ? sampleBlogs
     : transformResult.data;
+    
   return (
-    <section className="py-20 md:py-32 bg-white">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          title={SECTION_CONFIG.title}
-          sparklesConfig={SECTION_CONFIG.sparklesConfig}
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {blogsToDisplay.map((blog, index) => (
             <Link href={blog.url} key={blog.id} className="group">
               <article className={`enhanced-card rounded-3xl overflow-hidden h-full flex flex-col animate-on-scroll`}
@@ -135,15 +130,14 @@ export function Blog8({ posts }: Blog8Props) {
               </article>
             </Link>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link href="/blog" className="btn-secondary inline-flex items-center space-x-2">
-            <span>すべての記事を見る</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
       </div>
-    </section>
+      
+      <div className="text-center mt-12">
+        <Link href="/blog" className="btn-secondary inline-flex items-center space-x-2">
+          <span>すべての記事を見る</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </>
   );
 }

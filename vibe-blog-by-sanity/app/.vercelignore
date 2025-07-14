@@ -1,0 +1,307 @@
+# =====================================================
+# Vercelデプロイメント除外設定
+# =====================================================
+# このファイルは、Vercelへのデプロイ時に除外されるファイル/ディレクトリを定義します
+# セキュリティ上重要なファイルは必ず除外してください
+# =====================================================
+
+# =====================================================
+# 環境変数・秘密情報（最重要）
+# =====================================================
+# すべての環境変数ファイル
+.env
+.env.*
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env.staging
+.env.staging.local
+*.env
+*.env.backup
+*.env.old
+*.env.save
+*.env.bak
+env.*.conf
+.env.*.conf
+env-*.conf
+.env-*.conf
+
+# Sanityトークン・認証情報
+sanity.token
+sanity.secret
+sanity.key
+.sanity/
+sanity-secrets.json
+sanity-token.txt
+SANITY_AUTH_TOKEN*
+SANITY_API_TOKEN*
+
+# その他の秘密鍵・認証情報
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*.jks
+secrets.json
+credentials.json
+auth.json
+config.secret.js
+private.key
+private.pem
+id_rsa
+id_rsa.pub
+*.ppk
+
+# =====================================================
+# プライベートディレクトリ
+# =====================================================
+private/
+private/*
+downloads/
+downloads/*
+secrets/
+credentials/
+keys/
+
+# =====================================================
+# 開発・ビルド関連
+# =====================================================
+# Node.js
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.yarnrc
+.yarn-integrity
+
+# ビルド出力
+.next/
+out/
+dist/
+build/
+.turbo/
+.webpack/
+.cache/
+.parcel-cache/
+.rollup.cache/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# =====================================================
+# Sanity関連
+# =====================================================
+# Sanityスタジオ設定（ローカル開発用）
+studio/
+sanity.cli.ts
+sanity.config.ts
+.sanity/
+
+# Sanityデータエクスポート
+sanity-export/
+*.ndjson
+sanity-backup/
+exports/
+
+# =====================================================
+# ログ・デバッグファイル
+# =====================================================
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+sanity-debug.log
+logs/
+*.stackdump
+
+# =====================================================
+# エディタ・IDE設定
+# =====================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+.project
+.classpath
+.settings/
+*.sublime-*
+.history/
+
+# =====================================================
+# OS固有ファイル
+# =====================================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =====================================================
+# Firebase関連（Firebase Hostingを使用する場合）
+# =====================================================
+.firebase/
+.firebaserc
+firebase.json
+firebase-debug.log
+firestore-debug.log
+firestore.indexes.json
+database-debug.log
+pubsub-debug.log
+ui-debug.log
+emulators-debug.log
+firebase-export-*
+.firebaserc.*
+firebase.*.json
+
+# =====================================================
+# テスト・CI関連
+# =====================================================
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+playwright/.cache/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+jest-results.json
+.jest/
+
+# =====================================================
+# Git関連
+# =====================================================
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# =====================================================
+# ドキュメント・開発用ファイル
+# =====================================================
+README.md
+CONTRIBUTING.md
+CHANGELOG.md
+LICENSE
+docs/
+documentation/
+*.md
+!README.md
+
+# =====================================================
+# その他のセキュリティ関連
+# =====================================================
+# バックアップファイル
+*.backup
+*.bk
+*.orig
+*.old
+*.save
+backup/
+backups/
+
+# 一時ファイル
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# SQLiteデータベース
+*.sqlite
+*.sqlite3
+*.db
+
+# ダンプファイル
+*.dump
+*.sql
+*.ndjson
+
+# ZIPアーカイブ（プロジェクトファイルの可能性）
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# スクリプト（セキュリティリスク）
+scripts/
+bin/
+*.sh
+!deploy.sh
+
+# 設定ファイル（プロジェクト固有の設定）
+config.local.js
+config.secret.js
+settings.local.json
+
+# Makefile（ローカル開発用）
+Makefile
+Makefile.*
+
+# デプロイメント設定
+deploy.conf
+deployment.json
+vercel.json
+
+# データベース接続情報
+db.config.js
+database.json
+connection.json
+
+# APIキー設定
+api-keys.json
+api.config.js
+keys.json
+
+# Next.js設定（必要に応じて）
+# next.config.js は含める必要があるためコメントアウト
+# next.config.js
+
+# =====================================================
+# 重要: 以下のファイルは含める必要があります
+# =====================================================
+# !public/
+# !app/
+# !pages/
+# !styles/
+# !components/
+# !lib/
+# !package.json
+# !package-lock.json
+# !next.config.js
+# !tsconfig.json
+# !tailwind.config.ts
+# !postcss.config.js
+# !types/

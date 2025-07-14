@@ -1,0 +1,11 @@
+# Ignore reference project during build
+vibe-blog-by-sanity/
+
+# Ignore blog management files during build
+blog-management/
+
+# Ignore assets that aren't needed for build
+assets/
+
+# Ignore documentation
+docs/

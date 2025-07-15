@@ -26,15 +26,15 @@ export function ProblemsSection() {
             <div className="bg-teal-100 text-teal-600 rounded-full p-4 mb-4">
               <CheckIcon className="w-8 h-8" />
             </div>
-            <h3 className="font-bold text-lg mb-2">費用対効果が不明</h3>
-            <p className="text-slate-600 text-sm">AIを導入したいが、費用対効果が見えず、経営層を説得できない。</p>
+            <h3 className="font-bold text-lg mb-2">使い道がわからない</h3>
+            <p className="text-slate-600 text-sm">AIが話題だが、自社の業務でどんなことに使えるのか具体的なイメージが湧かない。</p>
           </div>
           <div className="flex flex-col items-center animate-on-scroll" style={{transitionDelay: '200ms'}}>
             <div className="bg-teal-100 text-teal-600 rounded-full p-4 mb-4">
               <CheckIcon className="w-8 h-8" />
             </div>
-            <h3 className="font-bold text-lg mb-2">活用が形骸化</h3>
-            <p className="text-slate-600 text-sm">ChatGPTを使ってみたが、期待した成果が出ず、活用が形骸化している。</p>
+            <h3 className="font-bold text-lg mb-2">種類が多すぎる</h3>
+            <p className="text-slate-600 text-sm">AI製品が多すぎて、どれが自社に適しているのか判断できない。</p>
           </div>
         </div>
       </div>

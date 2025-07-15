@@ -1,4 +1,5 @@
 // Sanity用の型定義
+import type { BlogPost, TeamMember } from '@/types';
 export interface SanityImage {
   _type: 'image'
   asset: {
@@ -77,3 +78,30 @@ export interface SanitySiteSettings {
     googleAnalyticsId?: string
   }
 }
+
+// ===== Data Transformation Types =====
+
+export type SanityToBlogPost = (sanityPost: SanityBlogPost) => BlogPost;
+export type SanityToTeamMember = (sanityAuthor: SanityAuthor) => TeamMember;
+
+// ===== Query Result Types =====
+
+export type SanityQueryResult<T> = {
+  result: T[];
+  query: string;
+  ms: number;
+};
+
+// ===== Utility Types for Sanity Operations =====
+
+export type SanityDocumentType = 'post' | 'author' | 'category' | 'faq' | 'siteSettings';
+
+export type SanityOperation = 'create' | 'update' | 'delete' | 'patch';
+
+export type SanityMutationResult = {
+  transactionId: string;
+  results: Array<{
+    id: string;
+    operation: SanityOperation;
+  }>;
+};

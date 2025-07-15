@@ -2,6 +2,7 @@
 
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { cn } from "@/lib/utils";
+import { SPARKLES_CONFIG } from "@/config/constants";
 
 interface SectionHeaderProps {
   title: string;
@@ -17,10 +18,7 @@ export function SectionHeader({
   title, 
   subtitle, 
   className,
-  sparklesConfig = {
-    colors: { first: "#4285F4", second: "#34A853" },
-    sparklesCount: 2
-  }
+  sparklesConfig = SPARKLES_CONFIG.default
 }: SectionHeaderProps) {
   return (
     <div className={cn("text-center mb-20", className)}>

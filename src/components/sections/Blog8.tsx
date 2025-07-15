@@ -96,7 +96,7 @@ export function Blog8({ posts }: Blog8Props) {
 
                 {/* Content */}
                 <div className="p-8 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2 leading-tight">
+                  <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-teal-600 transition-colors duration-300 line-clamp-2 leading-tight">
                     {blog.title}
                   </h3>
                   
@@ -107,7 +107,7 @@ export function Blog8({ posts }: Blog8Props) {
                   {/* Author and Date */}
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                      <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center shadow-lg">
                         <User className="w-5 h-5 text-white" />
                       </div>
                       <div>
@@ -119,14 +119,14 @@ export function Blog8({ posts }: Blog8Props) {
                       </div>
                     </div>
                     
-                    <div className="text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                    <div className="text-teal-600 font-semibold group-hover:text-teal-700 transition-colors">
                       <span className="text-sm">続きを読む</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Hover highlight effect */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/5 to-teal-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </article>
             </Link>
           ))}

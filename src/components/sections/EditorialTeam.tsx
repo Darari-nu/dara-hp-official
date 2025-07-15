@@ -1,15 +1,13 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TeamMember, SectionConfig } from "@/types";
+import { TeamMember } from "@/types";
+import { SPARKLES_CONFIG } from "@/config/constants";
 
-const SECTION_CONFIG: SectionConfig = {
+const SECTION_CONFIG = {
   title: "編集局メンバー",
   subtitle: "バラエティ豊かなメンバーでお送りします",
-  sparklesConfig: {
-    colors: { first: "#4285F4", second: "#34A853" },
-    sparklesCount: 2
-  }
-};
+  sparklesConfig: SPARKLES_CONFIG.editorial
+} as const;
 
 const team: TeamMember[] = [
   {
@@ -66,7 +64,7 @@ export function EditorialTeam() {
                     src={member.avatar}
                     alt={member.name}
                     fill
-                    className="rounded-full object-cover object-center shadow-xl ring-4 ring-white/50 group-hover/card:ring-blue-200/50 transition-all duration-300"
+                    className="rounded-full object-cover object-center shadow-xl ring-4 ring-white/50 group-hover/card:ring-teal-200/50 transition-all duration-300"
                     style={{ 
                       objectPosition: member.name === "読書ギャル卍頭よくなりたい" 
                         ? "50% 10%" 
@@ -75,7 +73,7 @@ export function EditorialTeam() {
                           : "50% 50%" 
                     }}
                   />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/10 to-purple-500/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-500/10 to-teal-600/10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="absolute -bottom-2 -right-2 text-3xl transform group-hover/card:scale-110 transition-transform duration-300 drop-shadow-lg">
                   {member.emoji}
@@ -83,12 +81,12 @@ export function EditorialTeam() {
               </div>
 
               {/* Role Badge with enhanced styling */}
-              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg">
+              <div className="inline-flex items-center bg-gradient-to-r from-teal-100 to-teal-200 text-teal-800 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg">
                 {member.role}
               </div>
 
               {/* Name with enhanced typography */}
-              <h3 className="font-bold text-xl text-slate-900 mb-4 group-hover/card:text-blue-600 transition-colors duration-300">
+              <h3 className="font-bold text-xl text-slate-900 mb-4 group-hover/card:text-teal-600 transition-colors duration-300">
                 {member.name}
               </h3>
 
@@ -98,10 +96,10 @@ export function EditorialTeam() {
               </p>
 
               {/* Subtle background pattern */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/5 to-teal-600/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none" />
               
               {/* Floating accent */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform scale-0 group-hover/card:scale-100" />
+              <div className="absolute top-4 right-4 w-2 h-2 bg-teal-400 rounded-full opacity-0 group-hover/card:opacity-100 transition-all duration-300 transform scale-0 group-hover/card:scale-100" />
             </div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SITE_CONFIG, COLORS, ANIMATION } from "@/config/constants";
 
 export function Header() {
   return (
@@ -8,8 +9,12 @@ export function Header() {
       <div className="container mx-auto px-6 py-4">
         {/* ガラスのような背景を持つナビゲーションバー */}
         <nav className="glass-nav rounded-full shadow-lg p-2 flex justify-between items-center">
-          <a href="#" className="font-bold text-xl text-slate-800 pl-4">DaraHP</a>
-          <a href="#articles" className="bg-teal-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-teal-600 transition-colors duration-300">
+          <a href="#" className="font-bold text-xl text-slate-800 pl-4">{SITE_CONFIG.name}</a>
+          <a 
+            href="#articles" 
+            className="bg-teal-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-teal-600 transition-colors"
+            style={{ transitionDuration: `${ANIMATION.duration.normal}ms` }}
+          >
             記事を読む
           </a>
         </nav>

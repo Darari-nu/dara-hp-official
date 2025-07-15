@@ -4,10 +4,8 @@ import { Blog8 } from "@/components/sections/Blog8";
 import { EditorialTeam } from "@/components/sections/EditorialTeam";
 import { SimpleWorkShowcase } from "@/components/sections/SimpleWorkShowcase";
 import { UdemyComingSoon } from "@/components/sections/UdemyComingSoon";
-import { SectionDivider } from "@/components/ui/section-divider";
 import { ScrollAnimations } from "@/components/ui/scroll-animations";
 import { client, queries } from "@/lib/sanity";
-import { SanityBlogPost } from "@/types/sanity";
 
 // データを取得する関数
 async function getPageData() {
@@ -26,7 +24,11 @@ export default async function Home() {
   return (
     <>
       <ScrollAnimations />
-      <main className="bg-white text-slate-700">
+      <main className="bg-gradient-to-br from-slate-50 via-gray-50 to-gray-100 text-slate-700 relative" style={{
+        backgroundImage: `radial-gradient(circle, #d1d5db 1px, transparent 1px)`,
+        backgroundSize: '24px 24px',
+        backgroundPosition: '0 0, 12px 12px'
+      }}>
         {/* --- ヒーローセクション --- */}
         <MinimalHero />
 
@@ -38,7 +40,7 @@ export default async function Home() {
           <div className="container mx-auto px-6">
             <div className="text-center mb-16 animate-on-scroll">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-800">新着記事</h2>
-              <p className="mt-4 text-lg text-slate-600">AI活用の最前線から、すぐに使えるヒントをお届けします。</p>
+              <p className="mt-4 text-lg text-slate-600">AI規制の最新動向から、ガバナンス整備のヒントをお届けします。</p>
             </div>
             <Blog8 posts={posts} />
           </div>

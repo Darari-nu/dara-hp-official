@@ -12,7 +12,7 @@ export function Header() {
           <a href="#" className="font-bold text-xl text-slate-800 pl-4">{SITE_CONFIG.name}</a>
           <a 
             href="#articles" 
-            className="bg-teal-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-teal-600 transition-colors"
+            className="bg-gray-900 text-white font-semibold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors"
             style={{ transitionDuration: `${ANIMATION.duration.normal}ms` }}
           >
             記事を読む

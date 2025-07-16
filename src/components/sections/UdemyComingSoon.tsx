@@ -4,7 +4,7 @@ import { SparklesText } from "@/components/ui/sparkles-text";
 
 export function UdemyComingSoon() {
   return (
-    <section className="py-32 bg-gray-50">
+    <section className="py-32 bg-gray-50/80">
       <div className="container text-center">
         <div className="space-y-12">
           <SparklesText 

@@ -42,7 +42,7 @@ const team: TeamMember[] = [
 
 export function EditorialTeam() {
   return (
-    <section className="py-20 md:py-32 bg-gray-50">
+    <section className="py-20 md:py-32 bg-gray-50/80">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           title={SECTION_CONFIG.title}

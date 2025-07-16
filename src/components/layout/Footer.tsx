@@ -3,7 +3,7 @@ import { Twitter, Mail } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white relative z-20">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left: About */}
@@ -16,7 +16,7 @@ export function Footer() {
                 AI規制の最新動向から実践的なガバナンス構築まで、企業のAI活用を安全に進めるための情報をお届けします。
               </p>
               <p className="text-white">
-                法規制対応、社内ルール策定、リスク管理など、現場で役立つソリューションを提供しています。
+                法規制対応から実際の活用事例まで、AIでこんなことができる！という具体的な作例もご紹介しています。
               </p>
             </div>
           </div>
@@ -38,9 +38,9 @@ export function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-white hover:text-white transition-colors">
+                    <Link href="/privacy" className="text-white hover:text-white transition-colors">
                       プライバシーポリシー
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -49,13 +49,15 @@ export function Footer() {
                 <h4 className="font-semibold text-lg text-white">SNS</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href="#" 
+                    href="https://x.com/madaladalarin" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white hover:bg-teal-500 transition-all"
                   >
                     <Twitter className="h-5 w-5" />
                   </a>
                   <a 
-                    href="#" 
+                    href="mailto:dararinu52@gmail.com" 
                     className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white hover:bg-teal-500 transition-all"
                   >
                     <Mail className="h-5 w-5" />

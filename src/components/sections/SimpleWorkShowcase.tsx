@@ -38,7 +38,7 @@ const works: Work[] = [
 
 export function SimpleWorkShowcase() {
   return (
-    <section id="works" className="py-32 bg-white">
+    <section id="works" className="py-32 bg-gray-50/80">
       <div className="container">
         <SectionHeader 
           title={SECTION_CONFIG.title}

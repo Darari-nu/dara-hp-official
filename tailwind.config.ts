@@ -57,6 +57,13 @@ const config: Config = {
           yellow: "#FBBC05",
           green: "#34A853",
         },
+        refined: {
+          teal: "#0f766e",
+          "teal-light": "#5eead4",
+          "teal-dark": "#134e4a",
+          gray: "#6b7280",
+          "warm-gray": "#78716c",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -83,7 +90,9 @@ const config: Config = {
         sparkle: "sparkle 2s ease-in-out infinite",
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
+        'sans': ['var(--font-noto-sans-jp)', 'sans-serif'],
+        'display': ['var(--font-poppins)', 'sans-serif'],
+        'mono': ['var(--font-roboto-mono)', 'monospace'],
       },
     },
   },

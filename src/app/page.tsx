@@ -1,6 +1,6 @@
 import { MinimalHero } from "@/components/sections/MinimalHero";
 import { ProblemsSection } from "@/components/sections/ProblemsSection";
-import { Blog8 } from "@/components/sections/Blog8";
+import { NewsLayoutBlog } from "@/components/sections/NewsLayoutBlog";
 import { EditorialTeam } from "@/components/sections/EditorialTeam";
 import { SimpleWorkShowcase } from "@/components/sections/SimpleWorkShowcase";
 import { UdemyComingSoon } from "@/components/sections/UdemyComingSoon";
@@ -44,23 +44,18 @@ export default async function Home() {
         </div>
 
         {/* --- 新着記事セクション --- */}
-        <section id="articles" className="py-20 md:py-28 relative z-10 bg-gray-50/80">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-16 animate-on-scroll">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800">新着記事</h2>
-              <p className="mt-4 text-lg text-slate-600">AI規制の最新動向から、ガバナンス整備のヒントをお届けします。</p>
-            </div>
-            <Blog8 posts={posts} />
-          </div>
-        </section>
+        <div className="relative z-10">
+          <NewsLayoutBlog sanityPosts={posts} />
+        </div>
 
+        {/* --- 作例セクション --- */}
+        <section id="works" className="animate-on-scroll relative z-10">
+          <SimpleWorkShowcase />
+        </section>
+        
         {/* --- 編集局メンバーセクション --- */}
         <section id="editorial" className="animate-on-scroll relative z-10">
           <EditorialTeam />
-        </section>
-        
-        <section id="works" className="animate-on-scroll relative z-10">
-          <SimpleWorkShowcase />
         </section>
         
         <section id="contact" className="animate-on-scroll relative z-10">

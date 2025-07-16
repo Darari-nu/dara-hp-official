@@ -96,18 +96,18 @@ export function Blog8({ posts }: Blog8Props) {
 
                 {/* Content */}
                 <div className="p-8 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-teal-600 transition-colors duration-300 line-clamp-2 leading-tight">
+                  <h3 className="text-xl font-display font-semibold mb-4 text-slate-900 group-hover:text-refined-teal transition-colors duration-300 line-clamp-2 leading-tight">
                     {blog.title}
                   </h3>
                   
-                  <p className="text-slate-600 mb-8 leading-relaxed line-clamp-3 flex-1 text-sm">
+                  <p className="text-slate-600 mb-8 leading-relaxed line-clamp-3 flex-1 text-sm font-light">
                     {blog.summary}
                   </p>
                   
                   {/* Author and Date */}
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center shadow-lg">
+                      <div className="w-10 h-10 bg-gradient-to-br from-refined-teal to-refined-teal-dark rounded-full flex items-center justify-center shadow-lg">
                         <User className="w-5 h-5 text-white" />
                       </div>
                       <div>
@@ -119,7 +119,7 @@ export function Blog8({ posts }: Blog8Props) {
                       </div>
                     </div>
                     
-                    <div className="text-teal-600 font-semibold group-hover:text-teal-700 transition-colors">
+                    <div className="text-refined-teal font-semibold group-hover:text-refined-teal-dark transition-colors">
                       <span className="text-sm">続きを読む</span>
                     </div>
                   </div>

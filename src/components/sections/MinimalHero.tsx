@@ -31,16 +31,16 @@ export function MinimalHero() {
         <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
       <div className="relative z-10 px-6 animate-on-scroll is-visible">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-wider" style={{textShadow: '0 2px 10px rgba(0,0,0,0.5)', letterSpacing: '0.1em'}}>
+        <h1 className="text-4xl md:text-6xl font-display font-semibold tracking-wider" style={{textShadow: '0 2px 10px rgba(0,0,0,0.5)', letterSpacing: '0.02em'}}>
           AIとなかよく
         </h1>
-        <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-slate-200" style={{textShadow: '0 1px 5px rgba(0,0,0,0.5)'}}>
+        <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-slate-200 font-light leading-relaxed" style={{textShadow: '0 1px 5px rgba(0,0,0,0.5)'}}>
           AIのルール作りから生産性向上まで、専門家が実践的なノウハウであなたの会社を次のステージへ導きます。
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a 
             href="#articles" 
-            className="text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 hover:shadow-xl whitespace-nowrap min-w-[200px] text-center"
+            className="text-white font-semibold py-3 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105 hover:shadow-xl whitespace-nowrap min-w-[200px] text-center"
             style={{ 
               transitionDuration: `${ANIMATION.duration.normal}ms`,
               background: 'linear-gradient(135deg, #14b8a6, #06b6d4, #0891b2) !important',
@@ -57,7 +57,7 @@ export function MinimalHero() {
           </a>
           <a 
             href="#works" 
-            className="text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 hover:shadow-xl whitespace-nowrap min-w-[200px] text-center"
+            className="text-white font-semibold py-3 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105 hover:shadow-xl whitespace-nowrap min-w-[200px] text-center"
             style={{ 
               transitionDuration: `${ANIMATION.duration.normal}ms`,
               background: 'linear-gradient(135deg, #10b981, #14b8a6, #0d9488) !important',

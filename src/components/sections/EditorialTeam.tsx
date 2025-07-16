@@ -81,17 +81,17 @@ export function EditorialTeam() {
               </div>
 
               {/* Role Badge with enhanced styling */}
-              <div className="inline-flex items-center bg-gradient-to-r from-teal-100 to-teal-200 text-teal-800 px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg">
+              <div className="inline-flex items-center bg-gradient-to-r from-refined-teal-light/20 to-refined-teal-light/30 text-refined-teal-dark px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg">
                 {member.role}
               </div>
 
               {/* Name with enhanced typography */}
-              <h3 className="font-bold text-xl text-slate-900 mb-4 group-hover/card:text-teal-600 transition-colors duration-300">
+              <h3 className="font-display font-semibold text-xl text-slate-900 mb-4 group-hover/card:text-refined-teal transition-colors duration-300">
                 {member.name}
               </h3>
 
               {/* Description with enhanced styling */}
-              <p className="text-slate-600 text-sm leading-relaxed flex-1 group-hover/card:text-slate-700 transition-colors duration-300">
+              <p className="text-slate-600 text-sm leading-relaxed flex-1 group-hover/card:text-slate-700 transition-colors duration-300 font-light">
                 {member.description}
               </p>
 

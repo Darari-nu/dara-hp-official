@@ -73,15 +73,15 @@
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+    @apply bg-gradient-to-br from-gray-50 to-gray-100/50 text-gray-900 font-sans antialiased;
     line-height: 1.6;
     font-size: 16px;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
-    line-height: 1.3;
-    letter-spacing: -0.025em;
+    @apply font-display font-semibold;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
   }
   
   h1 { @apply text-4xl md:text-5xl; }
@@ -92,9 +92,14 @@
   h6 { @apply text-base md:text-lg; }
   
   p {
-    @apply text-gray-700;
-    line-height: 1.7;
+    @apply text-gray-700 font-light;
+    line-height: 1.8;
     margin-bottom: 1rem;
+  }
+  
+  .text-mono {
+    @apply font-mono;
+    font-variant-numeric: tabular-nums;
   }
   
   /* Improved link styles */
@@ -204,12 +209,29 @@
     @apply transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1;
   }
   
+  .enhanced-card {
+    @apply bg-white/95 backdrop-blur-sm border border-gray-200/50;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .enhanced-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  
   .btn-primary {
-    @apply bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 focus-ring transition-all duration-200;
+    @apply bg-refined-teal text-white px-6 py-3 rounded-xl font-semibold hover:bg-refined-teal-dark focus-ring transition-all duration-200;
   }
   
   .btn-secondary {
-    @apply bg-white text-blue-600 border-2 border-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 focus-ring transition-all duration-200;
+    @apply bg-white text-refined-teal border-2 border-refined-teal px-6 py-3 rounded-xl font-semibold hover:bg-refined-teal-light/10 focus-ring transition-all duration-200;
   }
   
   .clip-path-hexagon {
@@ -218,19 +240,19 @@
   
   /* 軽量な背景図形アニメーション */
   .animate-float-slow {
-    animation: float-slow 8s ease-in-out infinite;
+    animation: float-slow 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   
   .animate-float-reverse {
-    animation: float-reverse 10s ease-in-out infinite;
+    animation: float-reverse 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   
   .animate-pulse-slow {
-    animation: pulse-slow 6s ease-in-out infinite;
+    animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
   
   .animate-fade-in-out {
-    animation: fade-in-out 12s ease-in-out infinite;
+    animation: fade-in-out 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 }
 

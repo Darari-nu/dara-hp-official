@@ -63,8 +63,8 @@ interface NewsBlogProps {
 
 export function NewsBlog({ sanityPosts }: NewsBlogProps) {
   // Sanityのデータが利用可能な場合は変換、そうでなければサンプルデータを使用
-  const transformResult = sanityPosts ? transformSanityBlogPosts(sanityPosts) : { success: false, data: [] };
-  const blogsToDisplay = transformResult.success 
+  const transformResult = sanityPosts ? transformSanityBlogPosts(sanityPosts) : { hasError: true, data: [] };
+  const blogsToDisplay = !transformResult.hasError 
     ? transformResult.data.slice(0, 4)
     : sampleBlogs;
     

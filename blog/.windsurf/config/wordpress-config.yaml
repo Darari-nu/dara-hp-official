@@ -1,0 +1,26 @@
+# WordPress自動投稿システム設定ファイル
+wordpress:
+  site_url: "https://madaladalarin.com"
+  username: "madaladalarin"
+  # Application Passwordは.envファイルから読み込み
+  default_status: "draft"  # draft, publish, private
+  default_author: 1
+  api_endpoint: "/wp-json/wp/v2"
+  
+upload:
+  source_dir: "/Users/watanabehidetaka/Claudecode/250629_Auto_blog_Writing/Wordpress"
+  backup_dir: "/Users/watanabehidetaka/Claudecode/250629_Auto_blog_Writing/uploaded"
+  
+# ログ設定
+logging:
+  level: "INFO"
+  file: "/Users/watanabehidetaka/Claudecode/250629_Auto_blog_Writing/01.system/01.wordpress_uploader/logs/wordpress_upload.log"
+  
+# カテゴリーIDマッピング（記事のcategory_idと実際のWordPressカテゴリーIDの対応）
+category_mapping:
+  29: 64  # "AI ニュース" → AI業界動向
+  28: 64  # "AIガバナンス" → AI業界動向
+  31: 64  # "AI企業導入" → AI業界動向
+  35: 64  # "AI導入" → AI業界動向
+  44: 64  # "AI業界動向" → AI業界動向
+  36: 64  # "AI法規制" → AI業界動向
